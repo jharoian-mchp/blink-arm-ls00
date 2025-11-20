@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "pic32c.h": "c",
+        "cmsis_compiler.h": "c",
+        "cmsis_gcc.h": "c"
+    },
+    "C_Cpp.default.defines": [
+        "__PIC32CM5164LS00100__"
+    ],
+    "C_Cpp.default.includePath": [
+        "dfp/PIC32CM-LS00/include",
+        "CMSIS_6/CMSIS/Core/Include",
+        "/home/c14029/.local/share/arm-gcc/v14.3.1/lib/gcc/arm-none-eabi/14.3.1/include"
+    ]
+ }
