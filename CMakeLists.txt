@@ -25,7 +25,6 @@ set(cmsis_include_path "CMSIS_6/CMSIS/Core/Include" )
 target_include_directories(	${executable_name}.elf
 				PRIVATE ${microchip_dfp_path}
 				PRIVATE ${cmsis_include_path}
-				PRIVATE "/home/c14029/.local/share/arm-gcc/v14.3.1/lib/gcc/arm-none-eabi/14.3.1/include"
 )
 
 # Set processor and other options for build
