@@ -23,7 +23,9 @@
             "type": "cortex-debug",
             "runToEntryPoint": "main",
             "servertype": "jlink",
-            "device": "PIC32CM5164LS"
+            "device": "PIC32CM5164LS00",
+            "svdPath": "${workspaceFolder}/dfp/PIC32CM-LS00/svd/PIC32CM5164LS00100.svd"
+
         }
 
     ]
