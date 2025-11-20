@@ -1,0 +1,21 @@
+# .gitignore file
+#
+# Set up for Visual Studio Code development
+#
+# John Haroian
+# Greg Mrozek
+#
+# Updated October 20, 2025
+
+# Python virtual environment
+**/.*venv/
+
+# CMake build directory
+**/build/
+
+# c_cpp_properties (contains machine specific path)
+**/c_cpp_properties.json
+
+# Large Files
+*.zip
+*.atpack
