@@ -13,38 +13,40 @@ project(    blink
 # List of .c files
 add_executable( ${executable_name}.elf
                 blink.c
-                dfp/PIC32CM-LS00/gcc/gcc/startup_pic32cm5164ls00100.c
 )
 
 # Modify the paths below for DFP and CMSIS include
 # Pack updates appear in home_directory and original files appear in MPLAB X install directory
-set(microchip_dfp_path "dfp/PIC32CM-LS00/include" )
-set(cmsis_include_path "CMSIS_6/CMSIS/Core/Include" )
+set(dfp_path "../dfp/PIC32CM-LS00" )
+set(cmsis_include_path "../CMSIS_6/CMSIS/Core/Include" )
 
 # Include directories - need at least DFP and CMSIS directories
 target_include_directories(	${executable_name}.elf
-				PRIVATE ${microchip_dfp_path}
+				PRIVATE ${dfp_path}
 				PRIVATE ${cmsis_include_path}
 )
 
 # Set processor and other options for build
 target_compile_options(	${executable_name}.elf
-			PUBLIC "-O0"
-			PUBLIC "-ggdb"
+				PUBLIC "-mprocessor=${microcontroller}" 
+				PUBLIC "-mdfp=${dfp_path}"
 )
 
 target_link_options(	${executable_name}.elf
-			PUBLIC "-Wl,-Map=${executable_name}.map"
-			PUBLIC "-ggdb"
+				PUBLIC "-mprocessor=${microcontroller}" 
+				PUBLIC "-mdfp=${dfp_path}"
+				PUBLIC "-Wl,-DSECURE"
+				PUBLIC "-Wl,-Map=${executable_name}.map" 
+				PUBLIC "-Wl,--memorysummary,memoryfile.xml"
 )
 
 # Set configuration
 target_compile_definitions(	${executable_name}.elf
-				PUBLIC "__PIC32CM5164LS00100__"
+				PUBLIC "XPRJ_default=default"
 )
 
 # Create hex file from target
 add_custom_command(	TARGET ${executable_name}.elf
-			POST_BUILD COMMAND arm-none-eabi-objcopy ${executable_name}.elf -O ihex ${executable_name}.hex
+			POST_BUILD COMMAND xc32-bin2hex ${executable_name}.elf
 )
 
