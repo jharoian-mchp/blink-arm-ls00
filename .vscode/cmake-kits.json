@@ -1,6 +1,6 @@
 [
     {
-        "name": "ARM-GCC",
-        "toolchainFile": "cmake/arm-none-eabi-gcc.cmake"
+        "name": "XC32",
+        "toolchainFile": "cmake/xc32.cmake"
     }
 ]
